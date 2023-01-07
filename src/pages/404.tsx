@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { Link, HeadFC, PageProps } from 'gatsby';
-
-const NotFoundPage: React.FC<PageProps> = () => {
+import { Link } from 'gatsby';
+import HeaderComponent from '../components/header';
+import { graphql, PageProps } from 'gatsby';
+const NotFoundPage = () => {
   return (
-    <main>
-      <h1>Ops, page does not exist</h1>
-      <Link to="/">Go back home</Link>.
-    </main>
+    <>
+      <HeaderComponent />
+      <main>
+        <h1>Ops, page does not exist</h1>
+        <Link to="/">Go back home</Link>.
+      </main>
+    </>
   );
 };
 
 export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found</title>;
+export const Head = () => <title>Not found</title>;
