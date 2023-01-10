@@ -4,7 +4,10 @@ import { graphql, PageProps } from 'gatsby';
 
 // import '../images/Menu.png';
 // import close from '../images/Close.svg';
-import close from './close.svg';
+const close = require('../images/Close.svg');
+// const menu = require('../images/Menu.svg');
+
+// import close from './close.svg';
 
 const HeaderComponent = () => {
   const [isActive, ToogleActive] = useState(false);
@@ -53,9 +56,12 @@ const HeaderComponent = () => {
         {!isActive && (
           <div className="justify-end flex-col tablet:hidden absolute min-w-full top-[0px] bg-blue-700 min-h-screen ">
             <div className="flex justify-end min-h-[64px] items-center">
-              <h1 className="mx-4" onClick={handleClick}>
-                close
-              </h1>
+              <img
+                onClick={handleClick}
+                className="tablet:hidden mr-4"
+                src={require('../images/Close.svg').default}
+                alt="Menu icon"
+              />
             </div>
             <ul className="flex-col">
               <li className="flex justify-center">
@@ -81,7 +87,12 @@ const HeaderComponent = () => {
             </ul>
           </div>
         )}
-        <img src={'/Close.svg'} alt="fefe" />
+        <img
+          onClick={handleClick}
+          className="tablet:hidden mr-4"
+          src={require('../images/Menu.svg').default}
+          alt="Menu icon"
+        />
         {/* <svg
           onClick={handleClick}
           className="tablet:hidden mr-4"

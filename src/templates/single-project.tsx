@@ -9,15 +9,21 @@ const ContactPage = ({ data }: any) => {
       <main>
         <article>
           <h1>{data.contentfulProject.title}</h1>
-          {data.images &&
-            data.images.map((image: any) => {
+          {data.contentfulProject.images &&
+            data.contentfulProject.images.map((image: any) => {
               if (image && image.url && image.title) {
                 return <img src={image.url} alt={image.title} />;
               }
             })}
 
-          {data.description && <p>{data.description.description}</p>}
-          {data.url && <a href={data.url}>Deployed Project</a>}
+          {data.contentfulProject.description && (
+            <p>{data.contentfulProject.description.description}</p>
+          )}
+          {data.contentfulProject.url && (
+            <a target="_blank" href={data.contentfulProject.url}>
+              Check out the deployed Project here
+            </a>
+          )}
         </article>
         <Link to="/">Home</Link>
       </main>
