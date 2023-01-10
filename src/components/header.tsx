@@ -60,7 +60,7 @@ const HeaderComponent = () => {
                 onClick={handleClick}
                 className="tablet:hidden mr-4"
                 src={require('../images/Close.svg').default}
-                alt="Menu icon"
+                alt="Close menu icon"
               />
             </div>
             <ul className="flex-col">
