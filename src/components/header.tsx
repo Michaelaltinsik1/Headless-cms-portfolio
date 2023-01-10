@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import { graphql, PageProps } from 'gatsby';
 
-// import Menufrom '../images/Menu.png';
+// import '../images/Menu.png';
+// import close from '../images/Close.svg';
+import close from './close.svg';
+
 const HeaderComponent = () => {
   const [isActive, ToogleActive] = useState(false);
   const handleClick = () => {
@@ -78,7 +81,8 @@ const HeaderComponent = () => {
             </ul>
           </div>
         )}
-        <svg
+        <img src={'/Close.svg'} alt="fefe" />
+        {/* <svg
           onClick={handleClick}
           className="tablet:hidden mr-4"
           width="32"
@@ -98,7 +102,7 @@ const HeaderComponent = () => {
               <rect width="32" height="32" fill="white" />
             </clipPath>
           </defs>
-        </svg>
+        </svg> */}
       </nav>
     </header>
   );

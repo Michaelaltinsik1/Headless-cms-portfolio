@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, PageProps } from 'gatsby';
 import HeaderComponent from '../components/header';
-const ContactPage = () => {
+const ContactPage = ({ data }: any) => {
+  console.log('Data:', data);
   return (
     <>
       <HeaderComponent />
       <main>
         <article>
-          <h1>Calculator</h1>
-          <img src="#" alt="#" />
-          <img src="#" alt="#" />
-          <img src="#" alt="#" />
-          <p>Description</p>
-          <a href="#">Deployed Project</a>
+          <h1>{data.contentfulProject.title}</h1>
+          {data.images &&
+            data.images.map((image: any) => {
+              if (image && image.url && image.title) {
+                return <img src={image.url} alt={image.title} />;
+              }
+            })}
+
+          {data.description && <p>{data.description.description}</p>}
+          {data.url && <a href={data.url}>Deployed Project</a>}
         </article>
         <Link to="/">Home</Link>
       </main>
@@ -21,3 +26,22 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+
+export const query = graphql`
+  query SingleProjectQuery($slug: String!) {
+    contentfulProject(slug: { eq: $slug }) {
+      title
+      images {
+        url
+        title
+      }
+      url
+      description {
+        description
+      }
+      category {
+        name
+      }
+    }
+  }
+`;
