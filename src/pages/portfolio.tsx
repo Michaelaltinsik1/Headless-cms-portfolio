@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
+import WrapperComponent from '../components/contentWrapper';
 const ProjectsOverviewPage = () => {
   return (
-    <>
+    <div className="min-h-screen">
       <HeaderComponent />
       <main>
         <h1>
@@ -18,7 +19,7 @@ const ProjectsOverviewPage = () => {
         </article>
         <Link to="/">Home</Link>
       </main>
-    </>
+    </div>
   );
 };
 

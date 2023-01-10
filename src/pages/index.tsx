@@ -2,27 +2,54 @@ import * as React from 'react';
 import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
 
-const IndexPage = () => {
+interface dataType {
+  data: {
+    contentfulLandingPageContent: {
+      title: string;
+      presentation?: {
+        presentation: string;
+      };
+      image: {
+        title: string;
+        url: string;
+      };
+    };
+  };
+}
+
+const IndexPage = ({ data }: dataType) => {
+  console.log(data);
   return (
-    <>
+    <div className="min-h-screen">
       <HeaderComponent />
       <main>
-        <h1>
-          Greetings, my name is Michael Altinisik and this is my{' '}
-          <em>Frontend developer portfolio</em>
-        </h1>
-        <img src="#" alt="image" />
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo maxime
-          beatae vero vel laborum numquam veritatis distinctio, eius neque
-          eligendi. Tempora sit quaerat, error ipsam voluptatibus repudiandae
-          vel odit dicta esse. Necessitatibus ex hic doloribus.
-        </p>
+        <h1>{data.contentfulLandingPageContent.title}</h1>
+        <p>{data.contentfulLandingPageContent.presentation?.presentation}</p>
+        <img
+          className="rounded-md"
+          src={data.contentfulLandingPageContent.image.url}
+          alt={data.contentfulLandingPageContent.image.title}
+        />
       </main>
-    </>
+    </div>
   );
 };
 
 export default IndexPage;
 
 export const Head = () => <title>Home Page</title>;
+
+export const data = graphql`
+  query pageQuery($id: String) {
+    contentfulLandingPageContent(id: { eq: $id }) {
+      title
+      presentation {
+        presentation
+      }
+      image {
+        title
+        url
+      }
+    }
+  }
+`;

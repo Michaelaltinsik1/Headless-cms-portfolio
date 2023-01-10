@@ -4,7 +4,7 @@ import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
 const AboutPage = () => {
   return (
-    <>
+    <div className="min-h-screen">
       <HeaderComponent />
       <main>
         <h1>Little about myself</h1>
@@ -31,7 +31,7 @@ const AboutPage = () => {
 
         <Link to="/">Home</Link>
       </main>
-    </>
+    </div>
   );
 };
 

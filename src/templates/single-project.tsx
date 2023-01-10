@@ -1,18 +1,40 @@
 import * as React from 'react';
-import { graphql, Link, PageProps } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import HeaderComponent from '../components/header';
-const ContactPage = ({ data }: any) => {
-  console.log('Data:', data);
+
+interface imageType {
+  title: string;
+  url: string;
+}
+interface categoryType {
+  name: string;
+}
+interface dataType {
+  data: {
+    contentfulProject: {
+      title: string;
+      description: {
+        description: string;
+      };
+      images: Array<imageType>;
+      url: string;
+      category: Array<categoryType>;
+    };
+  };
+}
+const ContactPage = ({ data }: dataType) => {
   return (
-    <>
+    <div className="min-h-screen">
       <HeaderComponent />
       <main>
         <article>
           <h1>{data.contentfulProject.title}</h1>
           {data.contentfulProject.images &&
-            data.contentfulProject.images.map((image: any) => {
+            data.contentfulProject.images.map((image: imageType) => {
               if (image && image.url && image.title) {
-                return <img src={image.url} alt={image.title} />;
+                return (
+                  <img key={image.url} src={image.url} alt={image.title} />
+                );
               }
             })}
 
@@ -27,7 +49,7 @@ const ContactPage = ({ data }: any) => {
         </article>
         <Link to="/">Home</Link>
       </main>
-    </>
+    </div>
   );
 };
 

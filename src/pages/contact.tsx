@@ -2,24 +2,72 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
-const ContactPage = () => {
+
+interface dataType {
+  data: {
+    contentfulContactPageContent: {
+      title: string;
+      epost: string;
+      githubUrl: string;
+      linkedInUrl: string;
+      phone: string;
+      image: {
+        title: string;
+        url: string;
+      };
+    };
+  };
+}
+
+const ContactPage = ({ data }: dataType) => {
+  console.log('Data: ', data);
   return (
-    <>
+    <div className="min-h-screen">
       <HeaderComponent />
       <main>
-        <h1>
-          If you found my <em>Frontend developer portfolio</em> interesting,
-          gladly contact me with the information below
-        </h1>
-        <img src="#" alt="#" />
-        <a href="mailto: Michael.altinisik@iths.se">Send Email</a>
-        <a href="tel:+46726444720">0726444720</a>
-        <a href="#">Github</a>
-        <a href="#">LinkedIn</a>
+        <h1>{data.contentfulContactPageContent.title}</h1>
+        <img
+          src={data.contentfulContactPageContent.image.url}
+          alt={data.contentfulContactPageContent.image.title}
+        />
+        <nav className="flex flex-col">
+          <h2>Contact information: </h2>
+          <a href={`mailto: ${data.contentfulContactPageContent.epost}`}>
+            Send Email here
+          </a>
+          <a href={`tel:${data.contentfulContactPageContent.phone}`}>
+            Call me: {data.contentfulContactPageContent.phone}
+          </a>
+          <a target="_blank" href={data.contentfulContactPageContent.githubUrl}>
+            Check out my Github here
+          </a>
+          <a
+            target="_blank"
+            href={data.contentfulContactPageContent.linkedInUrl}
+          >
+            Contact me on LinkedIn here
+          </a>
+        </nav>
         <Link to="/">Home</Link>
       </main>
-    </>
+    </div>
   );
 };
 
 export default ContactPage;
+
+export const data = graphql`
+  query pageQuery($id: String) {
+    contentfulContactPageContent(id: { eq: $id }) {
+      title
+      epost
+      githubUrl
+      linkedInUrl
+      phone
+      image {
+        title
+        url
+      }
+    }
+  }
+`;

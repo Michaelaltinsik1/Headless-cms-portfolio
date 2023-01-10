@@ -1,13 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import { graphql, PageProps } from 'gatsby';
-
-// import '../images/Menu.png';
-// import close from '../images/Close.svg';
-const close = require('../images/Close.svg');
-// const menu = require('../images/Menu.svg');
-
-// import close from './close.svg';
 
 const HeaderComponent = () => {
   const [isActive, ToogleActive] = useState(false);
@@ -53,7 +45,7 @@ const HeaderComponent = () => {
           </li>
         </ul>
 
-        {!isActive && (
+        {isActive && (
           <div className="justify-end flex-col tablet:hidden absolute min-w-full top-[0px] bg-blue-700 min-h-screen ">
             <div className="flex justify-end min-h-[64px] items-center">
               <img
@@ -93,27 +85,6 @@ const HeaderComponent = () => {
           src={require('../images/Menu.svg').default}
           alt="Menu icon"
         />
-        {/* <svg
-          onClick={handleClick}
-          className="tablet:hidden mr-4"
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_308_17760)">
-            <path
-              d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
-              fill="#FAFAFA"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_308_17760">
-              <rect width="32" height="32" fill="white" />
-            </clipPath>
-          </defs>
-        </svg> */}
       </nav>
     </header>
   );
