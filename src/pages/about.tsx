@@ -1,32 +1,55 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
+import ExperienceCard from '../components/experiencesCard';
 import { graphql, PageProps } from 'gatsby';
-const AboutPage = () => {
+
+interface EducationType {
+  title: string;
+  school: string;
+  to: string;
+  from: string;
+}
+interface EmploymentType {
+  role: string;
+  company: string;
+  to: string;
+  from: string;
+}
+interface DataType {
+  data: {
+    contentfulAboutPageContent: {
+      title: string;
+      presentation: {
+        presentation: string;
+      };
+      educations: Array<EducationType>;
+      employements: Array<EmploymentType>;
+    };
+  };
+}
+
+const AboutPage = ({ data }: DataType) => {
+  console.log('Data: ', data);
   return (
     <div className="min-h-screen">
       <HeaderComponent />
       <main>
-        <h1>Little about myself</h1>
-        <p>
-          Hello! I am an <em>frontend developer</em> student about start my last
-          semester at IT Högskolan.{' '}
-        </p>
+        <h1>{data.contentfulAboutPageContent.title}</h1>
+        <p>{data.contentfulAboutPageContent.presentation.presentation}</p>
         <section>
           <h2>Educations</h2>
-          <article>
-            <h3>Data engineer</h3>
-            <p>Kungliga Tekniska högskolan</p>
-            <p>period: 4/8/2018-6/6/2020</p>
-          </article>
+          {/* Renders all educations as ExperienceCards */}
+          {data.contentfulAboutPageContent.educations.map((education) => {
+            return <ExperienceCard contentfulAboutPageContent={education} />;
+          })}
         </section>
         <section>
           <h2>Employements</h2>
-          <article>
-            <h3>Presser/printer (Newspappers)</h3>
-            <p>V-tab (Summer job and part time)</p>
-            <p>period: 6/6/2017-6/8/2021</p>
-          </article>
+          {/* Renders all exployments as ExperienceCards */}
+          {data.contentfulAboutPageContent.employements.map((employment) => {
+            return <ExperienceCard contentfulAboutPageContent={employment} />;
+          })}
         </section>
 
         <Link to="/">Home</Link>
@@ -36,3 +59,26 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
+export const data = graphql`
+  query pageQuery($id: String) {
+    contentfulAboutPageContent(id: { eq: $id }) {
+      title
+      presentation {
+        presentation
+      }
+      educations {
+        school
+        title
+        to
+        from
+      }
+      employements {
+        role
+        company
+        from
+        to
+      }
+    }
+  }
+`;
