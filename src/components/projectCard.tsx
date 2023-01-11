@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 interface imageType {
   title: string;
@@ -31,17 +32,19 @@ const ProjectCard = ({ node }: NodeType) => {
     imgToRender = { url: node.images[0].url, alt: node.images[0].title };
   }
   return (
-    <article className="px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
-      {/* Checks of imgToRender is truthy if it is display image */}
-      {imgToRender && <img src={imgToRender.url} alt={imgToRender.alt} />}
-      <h2 className="mb-1">{node.title}</h2>
-      {node?.description?.description && (
-        <p className="mb-1">{node?.description?.description}</p>
-      )}
-      <a target="_blank" className="mb-1" href={node.url}>
-        Deployed Project
-      </a>
-    </article>
+    <Link to={`/projects/${node.title.toLocaleLowerCase()}`}>
+      <article className="px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
+        {/* Checks of imgToRender is truthy if it is display image */}
+        {imgToRender && <img src={imgToRender.url} alt={imgToRender.alt} />}
+        <h2 className="mb-1">{node.title}</h2>
+        {node?.description?.description && (
+          <p className="mb-1">{node?.description?.description}</p>
+        )}
+        <a target="_blank" className="mb-1" href={node.url}>
+          Deployed Project
+        </a>
+      </article>
+    </Link>
   );
 };
 
