@@ -1,22 +1,91 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
-import { graphql, PageProps } from 'gatsby';
-import WrapperComponent from '../components/contentWrapper';
-const ProjectsOverviewPage = () => {
+import { graphql } from 'gatsby';
+import ProjectCard from '../components/projectCard';
+
+interface ProjectType {
+  edges: Array<{
+    node: {
+      id: string;
+      title: string;
+      url: string;
+      images: Array<{ id: string; title: string; url: string }>;
+      category: Array<{ id: string; name: string }>;
+      description: {
+        description: string;
+      };
+    };
+  }>;
+}
+
+interface PortfolioType {
+  title: string;
+  description: {
+    description: string;
+  };
+}
+
+interface CategoryType {
+  totalCount: number;
+  nodes: Array<{ id: string; name: string }>;
+}
+
+interface DataType {
+  data: {
+    allContentfulCategory: CategoryType;
+    allContentfulProject: ProjectType;
+    contentfulPortfolioOverView: PortfolioType;
+  };
+}
+
+const ProjectsOverviewPage = ({ data }: DataType) => {
+  const [filter, setFilter] = useState<String>('None');
+  const [projects, setProjects] = useState<ProjectType>(
+    data.allContentfulProject
+  );
+  const [filteredProjects, setFilteredProjects] =
+    useState<ProjectType>(projects);
+
+  useEffect(() => {
+    setFilteredProjects(projects);
+    console.log(filteredProjects);
+    if (filter !== 'None') {
+      const filteredItems = projects.edges.filter((project) =>
+        project.node.category.some((element) => element.name === filter)
+      );
+      setFilteredProjects({ edges: filteredItems });
+    }
+  }, [filter]);
   return (
     <div className="min-h-screen">
       <HeaderComponent />
       <main>
-        <h1>
-          My <em>Frontend developer Portfolio</em> Projects
-        </h1>
-        <article>
-          <h2>Calculator</h2>
-          <img src="#" alt="#" />
-          <p>Description</p>
-          <a href="#">Deployed Project</a>
-        </article>
+        <h1>{data.contentfulPortfolioOverView.title}</h1>
+        <p>{data.contentfulPortfolioOverView.description.description}</p>
+        <form>
+          <label htmlFor="filter">Filter: </label>
+          <select
+            defaultValue="None"
+            defaultChecked
+            onChange={(e) => setFilter(e.target.value)}
+            name="filter"
+            id="filter"
+          >
+            {data.allContentfulCategory.nodes.map((category) => {
+              return (
+                <option key={category.id} value={category.name}>
+                  {category.name}
+                </option>
+              );
+            })}
+            <option value="None">None</option>
+          </select>
+        </form>
+        {filteredProjects?.edges.map((node) => {
+          return <ProjectCard key={node.node.id} node={node.node} />;
+        })}
+
         <Link to="/">Home</Link>
       </main>
     </div>
@@ -24,3 +93,42 @@ const ProjectsOverviewPage = () => {
 };
 
 export default ProjectsOverviewPage;
+
+export const data = graphql`
+  query pageQuery($id: String) {
+    contentfulPortfolioOverView(id: { eq: $id }) {
+      title
+      description {
+        description
+      }
+    }
+    allContentfulProject {
+      edges {
+        node {
+          id
+          title
+          url
+          description {
+            description
+          }
+          images {
+            id
+            url
+            title
+          }
+          category {
+            id
+            name
+          }
+        }
+      }
+    }
+    allContentfulCategory {
+      totalCount
+      nodes {
+        id
+        name
+      }
+    }
+  }
+`;
