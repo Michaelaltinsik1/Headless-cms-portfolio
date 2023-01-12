@@ -69,7 +69,7 @@ const ProjectsOverviewPage = ({ data }: DataType) => {
         <p className={`${body}`}>
           {data.contentfulPortfolioOverView.description.description}
         </p>
-        <section>
+        <section className="mb-6">
           <form>
             <label className="text-[20px]" htmlFor="filter">
               Filter:{' '}

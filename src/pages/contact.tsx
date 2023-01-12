@@ -34,7 +34,7 @@ const ContactPage = ({ data }: dataType) => {
           src={data.contentfulContactPageContent.image.url}
           alt={data.contentfulContactPageContent.image.title}
         />
-        <nav className="flex flex-col">
+        <nav className="flex flex-col mb-2">
           <h2 className={`${H2}`}>Contact information: </h2>
           <a
             className={`${links}`}
@@ -46,7 +46,7 @@ const ContactPage = ({ data }: dataType) => {
             className={`${links}`}
             href={`tel:${data.contentfulContactPageContent.phone}`}
           >
-            Call me
+            Call me {data.contentfulContactPageContent.phone}
           </a>
           <a
             className={`${links}`}

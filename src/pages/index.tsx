@@ -31,7 +31,7 @@ const IndexPage = ({ data }: dataType) => {
           {data.contentfulLandingPageContent.presentation?.presentation}
         </p>
         <img
-          className={`${imageStyles}`}
+          className={`${imageStyles} mb-0`}
           src={data.contentfulLandingPageContent.image.url}
           alt={data.contentfulLandingPageContent.image.title}
         />
