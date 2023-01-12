@@ -46,7 +46,7 @@ const HeaderComponent = () => {
         </ul>
 
         {isActive && (
-          <div className="justify-end flex-col tablet:hidden absolute min-w-full top-[0px] bg-blue-700 min-h-screen ">
+          <div className="justify-end flex-col tablet:hidden absolute min-w-full top-[0px] bg-blue-700 min-h-screen bg-navBG">
             <div className="flex justify-end min-h-[64px] items-center">
               <img
                 onClick={handleClick}

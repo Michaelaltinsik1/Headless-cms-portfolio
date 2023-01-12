@@ -1,5 +1,4 @@
-export const HeadingOne =
-  'font-sans desktop:text-[48px] font-normal leading-[140%] tablet:leading-[130%] tracking-tighter text-darkText mb-8 text-[40px]';
+export const HeadingOne = `font-sans desktop:text-[48px] font-normal leading-[140%] tablet:leading-[130%] tracking-tighter text-darkText mb-8 text-[40px]`;
 export const H2 =
   'font-sans desktop:text-[40px] font-normal leading-[140%] tablet:leading-[140%] tracking-tighter text-darkText mb-6 text-[32px]';
 export const H3 =
