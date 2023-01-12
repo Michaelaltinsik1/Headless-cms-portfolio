@@ -21,6 +21,10 @@ module.exports = {
       extraBG_2: '#47667b',
       darkText: '#212121',
       lightText: '#FAFAFA',
+      linkColor: '#243757',
+    },
+    boxShadow: {
+      cardShadow: '0px 3px 8px #8bb68e;',
     },
   },
   plugins: [],

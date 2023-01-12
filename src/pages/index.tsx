@@ -23,8 +23,8 @@ const IndexPage = ({ data }: dataType) => {
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
-      <main>
-        <h1 className={`${HeadingOne}`}>
+      <main className="px-4 py-6 desktop:px-20">
+        <h1 className={`${HeadingOne} first-letter:uppercase`}>
           {data.contentfulLandingPageContent.title}
         </h1>
         <p className={`${body}`}>

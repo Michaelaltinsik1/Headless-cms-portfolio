@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import HeaderComponent from '../components/header';
+import { HeadingOne, body, links } from '../styles/typography';
 
 interface imageType {
   title: string;
@@ -24,11 +25,13 @@ interface dataType {
 }
 const ContactPage = ({ data }: dataType) => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
-      <main>
+      <main className="px-4 py-6 desktop:px-20 desktop:py-10">
         <article>
-          <h1>{data.contentfulProject.title}</h1>
+          <h1 className={`${HeadingOne} first-letter:uppercase`}>
+            {data.contentfulProject.title}
+          </h1>
           {data.contentfulProject.images &&
             data.contentfulProject.images.map((image: imageType) => {
               if (image && image.url && image.title) {
@@ -39,15 +42,20 @@ const ContactPage = ({ data }: dataType) => {
             })}
 
           {data.contentfulProject.description && (
-            <p>{data.contentfulProject.description.description}</p>
+            <p className={`${body}`}>
+              {data.contentfulProject.description.description}
+            </p>
           )}
           {data.contentfulProject.url && (
-            <a target="_blank" href={data.contentfulProject.url}>
+            <a
+              className={`${links}`}
+              target="_blank"
+              href={data.contentfulProject.url}
+            >
               Check out the deployed Project here
             </a>
           )}
         </article>
-        <Link to="/">Home</Link>
       </main>
     </div>
   );

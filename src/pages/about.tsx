@@ -36,29 +36,31 @@ const AboutPage = ({ data }: DataType) => {
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
-      <main>
-        <h1 className={`${HeadingOne}`}>
+      <main className="px-4 py-6 tablet:px-10 tablet:py-12 desktop:px-20 desktop:py-16">
+        <h1 className={`${HeadingOne} first-letter:uppercase`}>
           {data.contentfulAboutPageContent.title}
         </h1>
         <p className={`${body}`}>
           {data.contentfulAboutPageContent.presentation.presentation}
         </p>
-        <section>
+        <section className="mb-6">
           <h2 className={`${H2}`}>Educations</h2>
-          {/* Renders all educations as ExperienceCards */}
-          {data.contentfulAboutPageContent.educations.map((education) => {
-            return <ExperienceCard contentfulAboutPageContent={education} />;
-          })}
+          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-4 tablet:gap-6 desktop:gap-10">
+            {/* Renders all educations as ExperienceCards */}
+            {data.contentfulAboutPageContent.educations.map((education) => {
+              return <ExperienceCard contentfulAboutPageContent={education} />;
+            })}
+          </div>
         </section>
-        <section>
+        <section className="mb-6">
           <h2 className={`${H2}`}>Employements</h2>
-          {/* Renders all exployments as ExperienceCards */}
-          {data.contentfulAboutPageContent.employements.map((employment) => {
-            return <ExperienceCard contentfulAboutPageContent={employment} />;
-          })}
+          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-4 tablet:gap-6 desktop:gap-10">
+            {/* Renders all exployments as ExperienceCards */}
+            {data.contentfulAboutPageContent.employements.map((employment) => {
+              return <ExperienceCard contentfulAboutPageContent={employment} />;
+            })}
+          </div>
         </section>
-
-        <Link to="/">Home</Link>
       </main>
     </div>
   );

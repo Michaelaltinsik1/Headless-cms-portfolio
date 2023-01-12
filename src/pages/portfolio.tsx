@@ -62,37 +62,39 @@ const ProjectsOverviewPage = ({ data }: DataType) => {
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
-      <main>
-        <h1 className={`${HeadingOne}`}>
+      <main className="px-4 py-6 desktop:px-20">
+        <h1 className={`${HeadingOne} first-letter:uppercase`}>
           {data.contentfulPortfolioOverView.title}
         </h1>
         <p className={`${body}`}>
           {data.contentfulPortfolioOverView.description.description}
         </p>
-        <form>
-          <label htmlFor="filter">Filter: </label>
-          <select
-            defaultValue="None"
-            defaultChecked
-            onChange={(e) => setFilter(e.target.value)}
-            name="filter"
-            id="filter"
-          >
-            {data.allContentfulCategory.nodes.map((category) => {
-              return (
-                <option key={category.id} value={category.name}>
-                  {category.name}
-                </option>
-              );
+        <section>
+          <form>
+            <label htmlFor="filter">Filter: </label>
+            <select
+              defaultValue="None"
+              defaultChecked
+              onChange={(e) => setFilter(e.target.value)}
+              name="filter"
+              id="filter"
+            >
+              {data.allContentfulCategory.nodes.map((category) => {
+                return (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                );
+              })}
+              <option value="None">None</option>
+            </select>
+          </form>
+          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-4 tablet:gap-6 desktop:gap-10">
+            {filteredProjects?.edges.map((node) => {
+              return <ProjectCard key={node.node.id} node={node.node} />;
             })}
-            <option value="None">None</option>
-          </select>
-        </form>
-        {filteredProjects?.edges.map((node) => {
-          return <ProjectCard key={node.node.id} node={node.node} />;
-        })}
-
-        <Link to="/">Home</Link>
+          </div>
+        </section>
       </main>
     </div>
   );

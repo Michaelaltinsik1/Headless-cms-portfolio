@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { graphql } from 'gatsby';
-import { HeadingOne, H2 } from '../styles/typography';
+import { HeadingOne, H2, links } from '../styles/typography';
 
 interface dataType {
   data: {
@@ -25,8 +25,8 @@ const ContactPage = ({ data }: dataType) => {
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
-      <main>
-        <h1 className={`${HeadingOne}`}>
+      <main className="px-4 py-6 desktop:px-20">
+        <h1 className={`${HeadingOne} first-letter:uppercase`}>
           {data.contentfulContactPageContent.title}
         </h1>
         <img
@@ -35,23 +35,33 @@ const ContactPage = ({ data }: dataType) => {
         />
         <nav className="flex flex-col">
           <h2 className={`${H2}`}>Contact information: </h2>
-          <a href={`mailto: ${data.contentfulContactPageContent.epost}`}>
-            Send Email here
-          </a>
-          <a href={`tel:${data.contentfulContactPageContent.phone}`}>
-            Call me: {data.contentfulContactPageContent.phone}
-          </a>
-          <a target="_blank" href={data.contentfulContactPageContent.githubUrl}>
-            Check out my Github here
+          <a
+            className={`${links}`}
+            href={`mailto: ${data.contentfulContactPageContent.epost}`}
+          >
+            Send email
           </a>
           <a
+            className={`${links}`}
+            href={`tel:${data.contentfulContactPageContent.phone}`}
+          >
+            Call me
+          </a>
+          <a
+            className={`${links}`}
+            target="_blank"
+            href={data.contentfulContactPageContent.githubUrl}
+          >
+            Check out my Github
+          </a>
+          <a
+            className={`${links}`}
             target="_blank"
             href={data.contentfulContactPageContent.linkedInUrl}
           >
-            Contact me on LinkedIn here
+            Contact me on LinkedIn
           </a>
         </nav>
-        <Link to="/">Home</Link>
       </main>
     </div>
   );

@@ -10,3 +10,6 @@ export const H5 =
 
 export const body =
   'font-serif desktop:text-[18px] font-normal leading-[150%] tablet:leading-[150%] tracking-normal text-darkText mb-4 text-[16px]';
+
+export const links =
+  'font-serif font-normal leading-[150%] tablet:leading-[150%] tracking-normal text-darkText mb-4 text-[20px] text-linkColor underline hover:no-underline underline-offset-4';

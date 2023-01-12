@@ -100,7 +100,7 @@ const ExperienceCard = ({
   }
   isEmployementType(contentfulAboutPageContent);
   return (
-    <article className="bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
+    <article className="shadow-cardShadow bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8 min-w-full min-h-full">
       {/* Check if type is Employment of Education to either get role or title from the object */}
       {isEmployementType(contentfulAboutPageContent) ? (
         <h3 className={`${H3}`}>Role: {contentfulAboutPageContent.role}</h3>
