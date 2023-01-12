@@ -71,8 +71,11 @@ const ProjectsOverviewPage = ({ data }: DataType) => {
         </p>
         <section>
           <form>
-            <label htmlFor="filter">Filter: </label>
+            <label className="text-[20px]" htmlFor="filter">
+              Filter:{' '}
+            </label>
             <select
+              className="my-4 mx-2 py-1 px-2 text-[20px] rounded-[4px] bg-navBG "
               defaultValue="None"
               defaultChecked
               onChange={(e) => setFilter(e.target.value)}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
-import { body, HeadingOne } from '../styles/typography';
+import { body, HeadingOne, imageStyles } from '../styles/typography';
 
 interface dataType {
   data: {
@@ -31,7 +31,7 @@ const IndexPage = ({ data }: dataType) => {
           {data.contentfulLandingPageContent.presentation?.presentation}
         </p>
         <img
-          className="rounded-md"
+          className={`${imageStyles}`}
           src={data.contentfulLandingPageContent.image.url}
           alt={data.contentfulLandingPageContent.image.title}
         />

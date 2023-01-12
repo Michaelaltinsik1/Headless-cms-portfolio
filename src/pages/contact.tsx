@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { graphql } from 'gatsby';
-import { HeadingOne, H2, links } from '../styles/typography';
+import { HeadingOne, H2, links, imageStyles } from '../styles/typography';
 
 interface dataType {
   data: {
@@ -30,6 +30,7 @@ const ContactPage = ({ data }: dataType) => {
           {data.contentfulContactPageContent.title}
         </h1>
         <img
+          className={`${imageStyles}`}
           src={data.contentfulContactPageContent.image.url}
           alt={data.contentfulContactPageContent.image.title}
         />
