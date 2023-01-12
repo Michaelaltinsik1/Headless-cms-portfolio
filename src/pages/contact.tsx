@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
-import { graphql, PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
+import { HeadingOne, H2 } from '../styles/typography';
 
 interface dataType {
   data: {
@@ -22,16 +23,18 @@ interface dataType {
 const ContactPage = ({ data }: dataType) => {
   console.log('Data: ', data);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
       <main>
-        <h1>{data.contentfulContactPageContent.title}</h1>
+        <h1 className={`${HeadingOne}`}>
+          {data.contentfulContactPageContent.title}
+        </h1>
         <img
           src={data.contentfulContactPageContent.image.url}
           alt={data.contentfulContactPageContent.image.title}
         />
         <nav className="flex flex-col">
-          <h2>Contact information: </h2>
+          <h2 className={`${H2}`}>Contact information: </h2>
           <a href={`mailto: ${data.contentfulContactPageContent.epost}`}>
             Send Email here
           </a>

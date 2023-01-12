@@ -1,4 +1,5 @@
 import React from 'react';
+import { H3, body } from '../styles/typography';
 
 interface EmploymentType {
   contentfulAboutPageContent: {
@@ -99,22 +100,24 @@ const ExperienceCard = ({
   }
   isEmployementType(contentfulAboutPageContent);
   return (
-    <article className="px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
+    <article className="bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
       {/* Check if type is Employment of Education to either get role or title from the object */}
       {isEmployementType(contentfulAboutPageContent) ? (
-        <h3 className="mb-1">Role: {contentfulAboutPageContent.role}</h3>
+        <h3 className={`${H3}`}>Role: {contentfulAboutPageContent.role}</h3>
       ) : (
-        <h3 className="mb-1">Title: {contentfulAboutPageContent.title}</h3>
+        <h3 className={`${H3}`}>Title: {contentfulAboutPageContent.title}</h3>
       )}
       {/* Check if type is Employment of Education to either get Company or school from the object */}
       {isEmployementType(contentfulAboutPageContent) ? (
-        <p className="mb-1">Company: {contentfulAboutPageContent.company}</p>
+        <p className={`${body}`}>
+          Company: {contentfulAboutPageContent.company}
+        </p>
       ) : (
-        <p className="mb-1">School: {contentfulAboutPageContent.school}</p>
+        <p className={`${body}`}>School: {contentfulAboutPageContent.school}</p>
       )}
       {/* Checks that neither of the variables are falsey */}
       {fromMonth && dates.fromYear && toMonth && dates.fromYear && (
-        <p>
+        <p className={`${body}`}>
           Period: {fromMonth} {dates.fromYear} - {toMonth} {dates.toYear}
         </p>
       )}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
+import { body, HeadingOne } from '../styles/typography';
 
 interface dataType {
   data: {
@@ -20,11 +21,15 @@ interface dataType {
 const IndexPage = ({ data }: dataType) => {
   console.log(data);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
       <main>
-        <h1>{data.contentfulLandingPageContent.title}</h1>
-        <p>{data.contentfulLandingPageContent.presentation?.presentation}</p>
+        <h1 className={`${HeadingOne}`}>
+          {data.contentfulLandingPageContent.title}
+        </h1>
+        <p className={`${body}`}>
+          {data.contentfulLandingPageContent.presentation?.presentation}
+        </p>
         <img
           className="rounded-md"
           src={data.contentfulLandingPageContent.image.url}

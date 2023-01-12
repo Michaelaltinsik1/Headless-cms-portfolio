@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import ExperienceCard from '../components/experiencesCard';
-import { graphql, PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
+
+import { HeadingOne, H2, body } from '../styles/typography';
 
 interface EducationType {
   title: string;
@@ -32,20 +34,24 @@ interface DataType {
 const AboutPage = ({ data }: DataType) => {
   console.log('Data: ', data);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
       <main>
-        <h1>{data.contentfulAboutPageContent.title}</h1>
-        <p>{data.contentfulAboutPageContent.presentation.presentation}</p>
+        <h1 className={`${HeadingOne}`}>
+          {data.contentfulAboutPageContent.title}
+        </h1>
+        <p className={`${body}`}>
+          {data.contentfulAboutPageContent.presentation.presentation}
+        </p>
         <section>
-          <h2>Educations</h2>
+          <h2 className={`${H2}`}>Educations</h2>
           {/* Renders all educations as ExperienceCards */}
           {data.contentfulAboutPageContent.educations.map((education) => {
             return <ExperienceCard contentfulAboutPageContent={education} />;
           })}
         </section>
         <section>
-          <h2>Employements</h2>
+          <h2 className={`${H2}`}>Employements</h2>
           {/* Renders all exployments as ExperienceCards */}
           {data.contentfulAboutPageContent.employements.map((employment) => {
             return <ExperienceCard contentfulAboutPageContent={employment} />;

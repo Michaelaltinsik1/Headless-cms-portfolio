@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { H2, body } from '../styles/typography';
 
 interface imageType {
   title: string;
@@ -33,12 +34,12 @@ const ProjectCard = ({ node }: NodeType) => {
   }
   return (
     <Link to={`/projects/${node.title.toLocaleLowerCase()}`}>
-      <article className="px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
+      <article className="bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8">
         {/* Checks of imgToRender is truthy if it is display image */}
         {imgToRender && <img src={imgToRender.url} alt={imgToRender.alt} />}
-        <h2 className="mb-1">{node.title}</h2>
+        <h2 className={`${H2}`}>{node.title}</h2>
         {node?.description?.description && (
-          <p className="mb-1">{node?.description?.description}</p>
+          <p className={`${body}`}>{node?.description?.description}</p>
         )}
         <a target="_blank" className="mb-1" href={node.url}>
           Deployed Project

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
-import { graphql, PageProps } from 'gatsby';
+import { HeadingOne } from '../styles/typography';
+
 const NotFoundPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
       <main>
-        <h1>Ops, page does not exist</h1>
+        <h1 className={`${HeadingOne}`}>Ops, page does not exist</h1>
         <Link to="/">Go back home</Link>.
       </main>
     </div>

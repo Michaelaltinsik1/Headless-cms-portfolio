@@ -4,6 +4,8 @@ import HeaderComponent from '../components/header';
 import { graphql } from 'gatsby';
 import ProjectCard from '../components/projectCard';
 
+import { HeadingOne, body } from '../styles/typography';
+
 interface ProjectType {
   edges: Array<{
     node: {
@@ -58,11 +60,15 @@ const ProjectsOverviewPage = ({ data }: DataType) => {
     }
   }, [filter]);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
       <main>
-        <h1>{data.contentfulPortfolioOverView.title}</h1>
-        <p>{data.contentfulPortfolioOverView.description.description}</p>
+        <h1 className={`${HeadingOne}`}>
+          {data.contentfulPortfolioOverView.title}
+        </h1>
+        <p className={`${body}`}>
+          {data.contentfulPortfolioOverView.description.description}
+        </p>
         <form>
           <label htmlFor="filter">Filter: </label>
           <select

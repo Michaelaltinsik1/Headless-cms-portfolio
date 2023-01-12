@@ -8,7 +8,7 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header>
+    <header className="bg-navBG">
       <nav className="bg-blue-900 min-h-[64px] tablet:min-h-[120px] justify-end flex items-center">
         <ul className="justify-end hidden tablet:flex px-12">
           <li className="mx-4">
