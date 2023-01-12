@@ -49,6 +49,8 @@ const HeaderComponent = () => {
           <div className="justify-end flex-col tablet:hidden absolute min-w-full top-[0px] bg-blue-700 min-h-screen bg-navBG">
             <div className="flex justify-end min-h-[64px] items-center">
               <img
+                width={50}
+                height={50}
                 onClick={handleClick}
                 className="tablet:hidden mr-4"
                 src={require('../images/Close.svg').default}
@@ -80,6 +82,8 @@ const HeaderComponent = () => {
           </div>
         )}
         <img
+          width={50}
+          height={50}
           onClick={handleClick}
           className="tablet:hidden mr-4"
           src={require('../images/Menu.svg').default}
