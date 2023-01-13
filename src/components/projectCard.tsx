@@ -36,7 +36,13 @@ const ProjectCard = ({ node }: NodeType) => {
     <Link to={`/projects/${node.title.toLocaleLowerCase()}`}>
       <article className="shadow-cardShadow bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8 min-w-full min-h-full">
         {/* Checks of imgToRender is truthy if it is display image */}
-        {imgToRender && <img src={imgToRender.url} alt={imgToRender.alt} />}
+        {imgToRender && (
+          <img
+            className="rounded-md"
+            src={imgToRender.url}
+            alt={imgToRender.alt}
+          />
+        )}
         <h2 className={`${H2}`}>{node.title}</h2>
         {node?.description?.description && (
           <p className={`${body}`}>{node?.description?.description}</p>

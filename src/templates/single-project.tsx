@@ -28,19 +28,25 @@ const ContactPage = ({ data }: dataType) => {
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
       <main className="px-4 py-6 desktop:px-20 desktop:py-10">
-        <article>
+        <article className="max-w-[1920px] mx-auto mb-6">
           <h1 className={`${HeadingOne} first-letter:uppercase`}>
             {data.contentfulProject.title}
           </h1>
-          {data.contentfulProject.images &&
-            data.contentfulProject.images.map((image: imageType) => {
-              if (image && image.url && image.title) {
-                return (
-                  <img key={image.url} src={image.url} alt={image.title} />
-                );
-              }
-            })}
-
+          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4 tablet:gap-6 desktop:gap-10 my-6 desktop:my-10">
+            {data.contentfulProject.images &&
+              data.contentfulProject.images.map((image: imageType) => {
+                if (image && image.url && image.title) {
+                  return (
+                    <img
+                      className="min-w-full min-h-full rounded-md"
+                      key={image.url}
+                      src={image.url}
+                      alt={image.title}
+                    />
+                  );
+                }
+              })}
+          </div>
           {data.contentfulProject.description && (
             <p className={`${body}`}>
               {data.contentfulProject.description.description}
