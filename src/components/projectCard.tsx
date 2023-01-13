@@ -38,7 +38,7 @@ const ProjectCard = ({ node }: NodeType) => {
         {/* Checks of imgToRender is truthy if it is display image */}
         {imgToRender && (
           <img
-            className="rounded-md"
+            className="rounded-md aspect-[6/3]"
             src={imgToRender.url}
             alt={imgToRender.alt}
           />
