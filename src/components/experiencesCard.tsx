@@ -54,9 +54,6 @@ interface DateTypes {
 const ExperienceCard = ({
   contentfulAboutPageContent,
 }: EmploymentType | EducationType) => {
-  console.log('Prop data: ', contentfulAboutPageContent);
-  console.log(contentfulAboutPageContent.to);
-  console.log(typeof contentfulAboutPageContent.to);
   const dates: DateTypes = {
     fromMonth: null,
     fromYear: null,

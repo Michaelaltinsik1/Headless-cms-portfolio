@@ -22,7 +22,6 @@ interface dataType {
 }
 
 const ContactPage = ({ data }: dataType) => {
-  console.log('Data: ', data);
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />

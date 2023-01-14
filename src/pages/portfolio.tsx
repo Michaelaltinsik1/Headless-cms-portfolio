@@ -52,7 +52,6 @@ const ProjectsOverviewPage = ({ data }: DataType) => {
 
   useEffect(() => {
     setFilteredProjects(projects);
-    console.log(filteredProjects);
     if (filter !== 'None') {
       const filteredItems = projects.edges.filter((project) =>
         project.node.category.some((element) => element.name === filter)

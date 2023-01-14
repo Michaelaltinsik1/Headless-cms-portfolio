@@ -33,9 +33,7 @@ interface DataType {
 }
 
 const AboutPage = ({ data }: DataType) => {
-  console.log('Data: ', data);
   const location = useLocation();
-  console.log('Location: ', location.pathname);
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />

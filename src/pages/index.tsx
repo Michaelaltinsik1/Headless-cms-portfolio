@@ -21,9 +21,7 @@ interface dataType {
 }
 
 const IndexPage = ({ data }: dataType) => {
-  console.log(data);
   const location = useLocation();
-  console.log('Location: ', location.pathname);
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />

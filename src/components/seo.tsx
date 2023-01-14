@@ -29,13 +29,10 @@ const SEO = (props: MetaTypes) => {
       }
     }
   `);
-  console.log(data.site.siteMetadata.siteUrl);
   const defaults = data?.site?.siteMetadata;
-
   const title = props.title || defaults.title;
   const description = props.description || defaults.description;
   const siteUrl = new URL(props.siteUrl || '/', defaults.siteUrl);
-  console.log('url: ', siteUrl);
   return (
     <>
       <title>{title}</title>
