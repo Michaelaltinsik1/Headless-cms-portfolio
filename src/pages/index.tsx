@@ -2,6 +2,8 @@ import * as React from 'react';
 import HeaderComponent from '../components/header';
 import { graphql, PageProps } from 'gatsby';
 import { body, HeadingOne, imageStyles } from '../styles/typography';
+import SEO from '../components/seo';
+import { useLocation } from '@reach/router';
 
 interface dataType {
   data: {
@@ -20,6 +22,8 @@ interface dataType {
 
 const IndexPage = ({ data }: dataType) => {
   console.log(data);
+  const location = useLocation();
+  console.log('Location: ', location.pathname);
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
@@ -42,7 +46,13 @@ const IndexPage = ({ data }: dataType) => {
 
 export default IndexPage;
 
-export const Head = () => <title>Home Page</title>;
+export const Head = ({ data }: dataType) => (
+  <SEO
+    description={data.contentfulLandingPageContent?.presentation?.presentation}
+    title={data.contentfulLandingPageContent.title}
+    siteUrl={location.pathname}
+  />
+);
 
 export const data = graphql`
   query pageQuery($id: String) {

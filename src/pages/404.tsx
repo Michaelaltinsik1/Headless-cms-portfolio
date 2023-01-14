@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { HeadingOne, links } from '../styles/typography';
-
+import SEO from '../components/seo';
 const NotFoundPage = () => {
   return (
     <div className="min-h-screen bg-primaryBG">
@@ -22,4 +22,10 @@ const NotFoundPage = () => {
 
 export default NotFoundPage;
 
-export const Head = () => <title>Not found</title>;
+export const Head = () => (
+  <SEO
+    description="Something went wrong and the requested page does not exist. Please navigate back to homepage to view my frontend portfolio"
+    title="Page not found! Navigate back home to check out my Frontend developer Portfolio"
+    siteUrl={location.pathname}
+  />
+);

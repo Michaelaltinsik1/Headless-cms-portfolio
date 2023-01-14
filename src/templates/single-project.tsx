@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { HeadingOne, body, links } from '../styles/typography';
+import SEO from '../components/seo';
 
 interface imageType {
   title: string;
@@ -68,6 +69,14 @@ const ContactPage = ({ data }: dataType) => {
 };
 
 export default ContactPage;
+
+export const Head = ({ data }: dataType) => (
+  <SEO
+    description={data.contentfulProject?.description?.description}
+    title={data.contentfulProject?.title + ' developer project'}
+    siteUrl={location.pathname}
+  />
+);
 
 export const query = graphql`
   query SingleProjectQuery($slug: String!) {

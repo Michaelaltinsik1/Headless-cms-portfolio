@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import ProjectCard from '../components/projectCard';
 
 import { HeadingOne, body } from '../styles/typography';
+import SEO from '../components/seo';
 
 interface ProjectType {
   edges: Array<{
@@ -104,6 +105,14 @@ const ProjectsOverviewPage = ({ data }: DataType) => {
 };
 
 export default ProjectsOverviewPage;
+
+export const Head = ({ data }: DataType) => (
+  <SEO
+    description={data.contentfulPortfolioOverView?.description?.description}
+    title={data.contentfulPortfolioOverView?.title}
+    siteUrl={location.pathname}
+  />
+);
 
 export const data = graphql`
   query pageQuery($id: String) {

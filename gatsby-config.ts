@@ -6,8 +6,9 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Portfolio`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Frontend Portfolio`,
+    description: `Frontend development portfolio`,
+    siteUrl: `https://michael-altinisik-portfolio.netlify.app/`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

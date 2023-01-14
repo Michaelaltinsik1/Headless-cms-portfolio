@@ -3,8 +3,9 @@ import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import ExperienceCard from '../components/experiencesCard';
 import { graphql } from 'gatsby';
-
+import { useLocation } from '@reach/router';
 import { HeadingOne, H2, body } from '../styles/typography';
+import SEO from '../components/seo';
 
 interface EducationType {
   title: string;
@@ -33,6 +34,8 @@ interface DataType {
 
 const AboutPage = ({ data }: DataType) => {
   console.log('Data: ', data);
+  const location = useLocation();
+  console.log('Location: ', location.pathname);
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
@@ -48,7 +51,12 @@ const AboutPage = ({ data }: DataType) => {
           <div className="grid grid-cols-1 desktop:grid-cols-2 gap-4 tablet:gap-6 desktop:gap-10">
             {/* Renders all educations as ExperienceCards */}
             {data.contentfulAboutPageContent.educations.map((education) => {
-              return <ExperienceCard contentfulAboutPageContent={education} />;
+              return (
+                <ExperienceCard
+                  key={education.title}
+                  contentfulAboutPageContent={education}
+                />
+              );
             })}
           </div>
         </section>
@@ -57,7 +65,12 @@ const AboutPage = ({ data }: DataType) => {
           <div className="grid grid-cols-1 desktop:grid-cols-2 gap-4 tablet:gap-6 desktop:gap-10">
             {/* Renders all exployments as ExperienceCards */}
             {data.contentfulAboutPageContent.employements.map((employment) => {
-              return <ExperienceCard contentfulAboutPageContent={employment} />;
+              return (
+                <ExperienceCard
+                  key={employment.role}
+                  contentfulAboutPageContent={employment}
+                />
+              );
             })}
           </div>
         </section>
@@ -67,6 +80,14 @@ const AboutPage = ({ data }: DataType) => {
 };
 
 export default AboutPage;
+
+export const Head = ({ data }: DataType) => (
+  <SEO
+    description={data.contentfulAboutPageContent?.presentation?.presentation}
+    title={data.contentfulAboutPageContent?.title}
+    siteUrl={location.pathname}
+  />
+);
 
 export const data = graphql`
   query pageQuery($id: String) {
