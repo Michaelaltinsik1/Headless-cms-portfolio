@@ -41,6 +41,19 @@ const SEO = (props: MetaTypes) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={siteUrl.href} />
+      <meta
+        name="keywords"
+        content="frontend developer porfolio,frontend developer, project, projects, porfolio, "
+      />
+      <meta
+        property="og:site_name"
+        content="Michael Altinisik Portfolio"
+      ></meta>
+      <meta property="og:title" content={title} />
+      <meta property="og:type" content="website" />
+      <meta property="og:description" content={description} />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
     </>
   );
 };
