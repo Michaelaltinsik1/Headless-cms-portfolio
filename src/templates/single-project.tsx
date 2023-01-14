@@ -74,7 +74,6 @@ export const Head = ({ data }: dataType) => (
   <SEO
     description={data.contentfulProject?.description?.description}
     title={data.contentfulProject?.title + ' developer project'}
-    siteUrl={location.pathname}
   />
 );
 

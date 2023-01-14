@@ -1,9 +1,8 @@
 import * as React from 'react';
 import HeaderComponent from '../components/header';
-import { graphql, PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
 import { body, HeadingOne, imageStyles } from '../styles/typography';
 import SEO from '../components/seo';
-import { useLocation } from '@reach/router';
 
 interface dataType {
   data: {
@@ -21,7 +20,6 @@ interface dataType {
 }
 
 const IndexPage = ({ data }: dataType) => {
-  const location = useLocation();
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
@@ -48,7 +46,6 @@ export const Head = ({ data }: dataType) => (
   <SEO
     description={data.contentfulLandingPageContent?.presentation?.presentation}
     title={data.contentfulLandingPageContent.title}
-    siteUrl={location.pathname}
   />
 );
 

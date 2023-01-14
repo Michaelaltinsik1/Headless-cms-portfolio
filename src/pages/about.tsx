@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import ExperienceCard from '../components/experiencesCard';
 import { graphql } from 'gatsby';
-import { useLocation } from '@reach/router';
 import { HeadingOne, H2, body } from '../styles/typography';
 import SEO from '../components/seo';
 
@@ -33,7 +32,6 @@ interface DataType {
 }
 
 const AboutPage = ({ data }: DataType) => {
-  const location = useLocation();
   return (
     <div className="min-h-screen bg-primaryBG">
       <HeaderComponent />
@@ -83,7 +81,6 @@ export const Head = ({ data }: DataType) => (
   <SEO
     description={data.contentfulAboutPageContent?.presentation?.presentation}
     title={data.contentfulAboutPageContent?.title}
-    siteUrl={location.pathname}
   />
 );
 

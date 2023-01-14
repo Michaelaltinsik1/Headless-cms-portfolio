@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { graphql } from 'gatsby';
 import { HeadingOne, H2, links, imageStyles } from '../styles/typography';
@@ -71,10 +70,7 @@ const ContactPage = ({ data }: dataType) => {
 export default ContactPage;
 
 export const Head = ({ data }: dataType) => (
-  <SEO
-    title={data.contentfulContactPageContent?.title}
-    siteUrl={location.pathname}
-  />
+  <SEO title={data.contentfulContactPageContent?.title} />
 );
 
 export const data = graphql`

@@ -33,25 +33,31 @@ const ProjectCard = ({ node }: NodeType) => {
     imgToRender = { url: node.images[0].url, alt: node.images[0].title };
   }
   return (
-    <Link to={`/projects/${node.title.toLocaleLowerCase()}`}>
-      <article className="shadow-cardShadow bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8 min-w-full min-h-full">
-        {/* Checks of imgToRender is truthy if it is display image */}
-        {imgToRender && (
-          <img
-            className="rounded-md aspect-[6/3]"
-            src={imgToRender.url}
-            alt={imgToRender.alt}
-          />
-        )}
-        <h2 className={`${H2}`}>{node.title}</h2>
-        {node?.description?.description && (
-          <p className={`${body}`}>{node?.description?.description}</p>
-        )}
-        <a target="_blank" className={`${links}`} href={node.url}>
-          Deployed Project
-        </a>
-      </article>
-    </Link>
+    // <Link to={`/projects/${node.title.toLocaleLowerCase()}`}>
+    <article className="shadow-cardShadow bg-cardBG px-4 py-6 rounded-lg tablet:rounded-2xl bg-blue-500 tablet:max-w-[500px] tablet:px-6 tablet:py-8 min-w-full min-h-full">
+      {/* Checks of imgToRender is truthy if it is display image */}
+      {imgToRender && (
+        <img
+          className="rounded-md aspect-[6/3]"
+          src={imgToRender.url}
+          alt={imgToRender.alt}
+        />
+      )}
+      <Link
+        className={`${links}`}
+        to={`/projects/${node.title.toLocaleLowerCase()}`}
+      >
+        <h2 className={`${H2} text-linkColor`}>{node.title}</h2>
+      </Link>
+      {/* <h2 className={`${H2}`}>{node.title}</h2> */}
+      {node?.description?.description && (
+        <p className={`${body}`}>{node?.description?.description}</p>
+      )}
+      <a target="_blank" className={`${links}`} href={node.url}>
+        Deployed Project
+      </a>
+    </article>
+    // </Link>
   );
 };
 

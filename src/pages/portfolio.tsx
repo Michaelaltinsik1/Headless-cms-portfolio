@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'gatsby';
 import HeaderComponent from '../components/header';
 import { graphql } from 'gatsby';
 import ProjectCard from '../components/projectCard';
@@ -109,7 +108,6 @@ export const Head = ({ data }: DataType) => (
   <SEO
     description={data.contentfulPortfolioOverView?.description?.description}
     title={data.contentfulPortfolioOverView?.title}
-    siteUrl={location.pathname}
   />
 );
 
