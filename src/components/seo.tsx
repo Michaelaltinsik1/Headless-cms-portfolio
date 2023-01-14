@@ -28,6 +28,9 @@ const SEO = (props: MetaTypes) => {
       }
     }
   `);
+  /**
+   * Stores the meta data to be displayed in these variables
+   */
   const defaults = data?.site?.siteMetadata;
   const title = props.title || defaults.title;
   const description = props.description || defaults.description;

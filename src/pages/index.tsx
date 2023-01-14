@@ -42,13 +42,18 @@ const IndexPage = ({ data }: dataType) => {
 
 export default IndexPage;
 
+/**
+ * Renders SEO component with title and description based on the parameters sent it
+ */
 export const Head = ({ data }: dataType) => (
   <SEO
     description={data.contentfulLandingPageContent?.presentation?.presentation}
     title={data.contentfulLandingPageContent.title}
   />
 );
-
+/**
+ * Graphql query that gets the dynamic data for the index page
+ */
 export const data = graphql`
   query pageQuery($id: String) {
     contentfulLandingPageContent(id: { eq: $id }) {

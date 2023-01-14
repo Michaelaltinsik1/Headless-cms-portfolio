@@ -42,13 +42,17 @@ interface DataType {
 }
 
 const ProjectsOverviewPage = ({ data }: DataType) => {
-  const [filter, setFilter] = useState<String>('None');
-  const [projects, setProjects] = useState<ProjectType>(
+  const [filter, setFilter] = useState<String>('None'); // stores filter state
+  const [projects, setProjects] = useState<ProjectType>( // Stores all projects
     data.allContentfulProject
   );
-  const [filteredProjects, setFilteredProjects] =
+  const [filteredProjects, setFilteredProjects] = // Stores filtered projects
     useState<ProjectType>(projects);
 
+  /**
+   * This useEffect is ran everytime the filter state changes and gets all the projects
+   * that contains the category in the filter
+   * */
   useEffect(() => {
     setFilteredProjects(projects);
     if (filter !== 'None') {
